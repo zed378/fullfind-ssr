@@ -59,12 +59,11 @@ export default function RolesCard({ item, close }) {
       </Fade>
 
       {/* Use next/image for optimized image loading */}
-      <div className="absolute hd:-bottom-6 3xl:-bottom-3 2xl:-bottom-3 xl:-bottom-2 hd:right-10 3xl:right-4 2xl:right-10 xl:right-5 -z-0">
+      <div className="absolute hd:-bottom-6 3xl:-bottom-3 2xl:-bottom-3 xl:-bottom-2 hd:right-10 3xl:right-4 2xl:right-10 xl:right-5 hd:h-28 hd:w-28 3xl:h-24 3xl:w-24 2xl:h-20 2xl:w-20 xl:h-16 xl:w-16 -z-0">
         <Image
           src={image}
           alt="Card background"
-          width={500} // Set your width and height (adjust according to your design)
-          height={300}
+          objectFit="contain"
           layout="intrinsic" // Ensures it maintains aspect ratio
           loading="lazy" // Lazy loading for performance optimization
         />

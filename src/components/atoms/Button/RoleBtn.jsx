@@ -11,7 +11,7 @@ export default function RoleBtn({ open, inCard, val }) {
     <button
       className={`${inCard ? rolePad : rolePads}`}
       onClick={() => {
-        router.push("/pricing"); // Navigate to /pricing
+        router.push("/pricing");
         open();
       }}
     >

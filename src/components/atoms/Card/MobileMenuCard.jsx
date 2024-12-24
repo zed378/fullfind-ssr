@@ -29,7 +29,7 @@ export default function MobileMenuCard({ menus, anim, open }) {
         onClick={open}
       ></div>
 
-      <div className="px-3 h-full mt-1.5 relative z-50">
+      <div className="px-3 h-full -mt-6 relative z-50">
         <div
           className={`${anim} bg-white shadow-lg px-5 py-5 rounded-xl flex flex-col relative overflow-hidden animate__animated ${
             menus ? "animate__fadeInDown" : "animate__fadeOutUp"

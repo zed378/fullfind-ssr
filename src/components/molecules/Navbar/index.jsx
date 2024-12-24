@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { menuOpen } from "redux/menu"; // Assuming redux is being used for global state
-
+import { menuOpen } from "redux/menu";
 // Components
 import { StartHiringBtn, MobileMenu } from "atoms/Button";
 import { Fade } from "react-awesome-reveal";
 import NavCard from "atoms/NavCard";
 import { MobileMenuCard } from "atoms/Card";
+import Image from "next/image";
 
 // Assets
 import logo from "brand/logoFull.png";
@@ -56,18 +56,22 @@ export default function Navbar() {
         <div className="xl:px-16 xs:px-3 relative z-50 w-full">
           <div className="w-full bg-white xs:pb-3 xs:pt-2 xl:py-3 2xl:py-4 xl:px-8 xs:px-4 rounded-xl flex justify-between items-center shadow-lg">
             <Fade direction="left" duration={1000} delay={200}>
-              <img
-                src={width > 1024 ? logo : logoS}
-                alt="Fullfind Logo"
-                className="xs:h-7 2xl:h-8 3xl:h-10 cursor-pointer"
+              <div
+                className="xs:h-7 3xl:h-10 2xl:h-8 hd:w-16 3xl:w-16 2xl:w-12 xl:w-7 lg:w-7 xs:w-7 cursor-pointer"
                 onClick={() => router.push("/")}
-              />
+              >
+                <Image
+                  src={width > 1024 ? logo : logoS}
+                  alt="Fullfind Logo"
+                  objectFit="contain"
+                />
+              </div>
             </Fade>
 
             {width >= 1024 && (
               <Fade cascade duration={500} direction="down" delay={200}>
-                <ul className="flex items-center xl:gap-20 xl:text-md 2xl:gap-24 2xl:text-base">
-                  <li
+                <div className="flex items-center xl:gap-20 xl:text-md 2xl:gap-24 2xl:text-base">
+                  <div
                     className="overflow-hidden cursor-pointer"
                     onMouseEnter={() => {
                       setRole(true);
@@ -90,9 +94,9 @@ export default function Navbar() {
                         role ? "animate__slideInLeft" : "animate__slideOutRight"
                       }`}
                     />
-                  </li>
+                  </div>
 
-                  <li
+                  <div
                     className="overflow-hidden cursor-pointer"
                     onMouseEnter={() => {
                       setHow(true);
@@ -109,9 +113,9 @@ export default function Navbar() {
                         how ? "animate__slideInLeft" : "animate__slideOutRight"
                       }`}
                     />
-                  </li>
+                  </div>
 
-                  <li
+                  <div
                     className="overflow-hidden cursor-pointer"
                     onMouseEnter={() => {
                       setPrice(true);
@@ -130,8 +134,8 @@ export default function Navbar() {
                           : "animate__slideOutRight"
                       }`}
                     />
-                  </li>
-                </ul>
+                  </div>
+                </div>
               </Fade>
             )}
 
