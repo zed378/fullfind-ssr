@@ -1,0 +1,13 @@
+# Deny direct access to all files in the /assets directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?fullfind\.webcompose\.id/ [NC]
+    RewriteCond %{HTTP_REFERER} !^https?://(www\.)?fullfind\.co/ [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Allow access for specific file types if needed
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf|otf)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

@@ -1,7 +1,34 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "assets/*": ["./src/assets/*"],
+      "icons/*": ["./src/assets/icons/*"],
+      "flow/*": ["./src/assets/flow/*"],
+      "brand/*": ["./src/assets/brand/*"],
+      "portofolio/*": ["./src/assets/portofolio/*"],
+      "capabilities/*": ["./src/assets/capabilities/*"],
+      "industry/*": ["./src/assets/industry/*"],
+      "banner/*": ["./src/assets/banner/*"],
+      "body/*": ["./src/assets/body/*"],
+      "pricing/*": ["./src/assets/pricing/*"],
+      "niche/*": ["./src/assets/niche/*"],
+      "explore/*": ["./src/assets/explore/*"],
+      "home/*": ["./src/assets/homepage/*"],
+      "caro/*": ["./src/assets/carousel/*"],
+      "role/*": ["./src/assets/rolepage/*"],
+      "styles/*": ["./src/assets/styles/*"],
+      "atoms/*": ["./src/components/atoms/*"],
+      "molecules/*": ["./src/components/molecules/*"],
+      "organisms/*": ["./src/components/organisms/*"],
+      "constant/*": ["./src/constant/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "layout/*": ["./src/layout/*"],
+      "pages/*": ["./src/pages/*"],
+      "redux/*": ["./src/redux/*"],
+      "routes/*": ["./src/routes/*"]
     }
-  }
+  },
+  "include": ["src"]
 }
