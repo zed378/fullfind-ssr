@@ -57,13 +57,13 @@ export default function Navbar() {
           <div className="w-full bg-white xs:pb-3 xs:pt-2 xl:py-3 2xl:py-4 xl:px-8 xs:px-4 rounded-xl flex justify-between items-center shadow-lg">
             <Fade direction="left" duration={1000} delay={200}>
               <div
-                className="xs:h-7 3xl:h-10 2xl:h-8 hd:w-16 3xl:w-16 2xl:w-12 xl:w-7 lg:w-7 xs:w-7 cursor-pointer"
+                className="xs:h-7 3xl:h-10 2xl:h-8 cursor-pointer"
                 onClick={() => router.push("/")}
               >
                 <Image
                   src={width > 1024 ? logo : logoS}
                   alt="Fullfind Logo"
-                  objectFit="contain"
+                  style={{ width: "auto", height: "100%" }}
                 />
               </div>
             </Fade>

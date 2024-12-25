@@ -18,7 +18,7 @@
       "home/*": ["./src/assets/homepage/*"],
       "caro/*": ["./src/assets/carousel/*"],
       "role/*": ["./src/assets/rolepage/*"],
-      "styles/*": ["./src/assets/styles/*"],
+      "styles/*": ["./src/styles/*"],
       "atoms/*": ["./src/components/atoms/*"],
       "molecules/*": ["./src/components/molecules/*"],
       "organisms/*": ["./src/components/organisms/*"],

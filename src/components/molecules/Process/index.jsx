@@ -3,6 +3,7 @@
 // components
 import { Fade } from "react-awesome-reveal";
 import { StartHiringBtn } from "atoms/Button";
+import Image from "next/image";
 
 // assets
 import pro1 from "icons/pro1.svg";
@@ -43,38 +44,46 @@ export default function Process() {
           <Fade direction="down" duration={500} cascade className="w-full">
             <ul className="w-full flex flex-col hd:gap-5 3xl:gap-6 2xl:gap-7 xl:gap-5 xs:gap-6">
               <li className="hd:px-7 3xl:px-6 2xl:px-5 xs:px-4 xl:w-auto xs:w-full hd:py-2 2xl:py-3 xl:py-2 xs:py-2 cursor-pointer hover:bg-pink-100 rounded-2xl border-2 border-[#F9756D] text-[#F9756D] flex items-center xl:justify-start lg:justify-center xs:justify-start gap-3 hd:text-2xl 3xl:text-2xl 2xl:text-2xl lg:text-xl font-medium">
-                <img
-                  src={pro1}
-                  alt="Roles Icon"
-                  className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5"
-                />{" "}
+                <div className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5">
+                  <Image
+                    src={pro1}
+                    alt="Roles Icon"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </div>
                 English Assessment
               </li>
 
               <li className="hd:px-7 3xl:px-6 2xl:px-5 xs:px-4 xl:w-auto xs:w-full hd:py-2 2xl:py-3 xl:py-2 xs:py-2 cursor-pointer hover:bg-pink-100 rounded-2xl border-2 border-[#F9756D] text-[#F9756D] flex items-center xl:justify-start lg:justify-center xs:justify-start gap-3 hd:text-2xl 3xl:text-2xl 2xl:text-2xl lg:text-xl font-medium">
-                <img
-                  src={pro2}
-                  alt="Roles Icon"
-                  className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5"
-                />{" "}
+                <div className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5">
+                  <Image
+                    src={pro2}
+                    alt="Roles Icon"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </div>
                 Skill Test
               </li>
 
               <li className="hd:px-7 3xl:px-6 2xl:px-5 xs:px-4 xl:w-auto xs:w-full hd:py-2 2xl:py-3 xl:py-2 xs:py-2 cursor-pointer hover:bg-pink-100 rounded-2xl border-2 border-[#F9756D] text-[#F9756D] flex items-center xl:justify-start lg:justify-center xs:justify-start gap-3 hd:text-2xl 3xl:text-2xl 2xl:text-2xl lg:text-xl font-medium">
-                <img
-                  src={pro3}
-                  alt="Roles Icon"
-                  className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5"
-                />{" "}
+                <div className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5">
+                  <Image
+                    src={pro3}
+                    alt="Roles Icon"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </div>
                 Interviews & Reference Checks
               </li>
 
               <li className="hd:px-7 3xl:px-6 2xl:px-5 xs:px-4 xl:w-auto xs:w-full hd:py-2 2xl:py-3 xl:py-2 xs:py-2 cursor-pointer hover:bg-pink-100 rounded-2xl border-2 border-[#F9756D] text-[#F9756D] flex items-center xl:justify-start lg:justify-center xs:justify-start gap-3 hd:text-2xl 3xl:text-2xl 2xl:text-2xl lg:text-xl font-medium">
-                <img
-                  src={pro4}
-                  alt="Roles Icon"
-                  className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5"
-                />{" "}
+                <div className="hd:w-10 3xl:w-12 2xl:w-10 xl:w-8 lg:w-10 xs:w-5">
+                  <Image
+                    src={pro4}
+                    alt="Roles Icon"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                </div>
                 AI Training
               </li>
             </ul>
@@ -111,7 +120,13 @@ export default function Process() {
 
         <div className="hd:w-1/3 xs:w-full xl:block xs:hidden">
           <Fade direction="right" duration={750}>
-            <img src={proCard} alt="Hiring Process" className="w-full" />
+            <div className="w-full">
+              <Image
+                src={proCard}
+                alt="Hiring Process"
+                style={{ width: "100%", height: "auto" }}
+              />
+            </div>
           </Fade>
         </div>
       </div>

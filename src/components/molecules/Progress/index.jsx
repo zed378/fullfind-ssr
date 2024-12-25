@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 
 // components
-import ScrollCarousel from "scroll-carousel-react";
+// import ScrollCarousel from "scroll-carousel-react";
 import { Fade } from "react-awesome-reveal";
 import ProgressBar from "atoms/ProgressBar";
 import { FAQCard, PriceCards } from "atoms/Card";
@@ -21,15 +21,21 @@ import p8 from "home/p8.jpg";
 // constant
 import { CTAbtn } from "constant/padding";
 
+// dynamic
+import dynamic from "next/dynamic";
+const ScrollCarousel = dynamic(() => import("scroll-carousel-react"), {
+  ssr: false,
+});
+
 export default function Progress() {
   const images = [p1, p2, p3, p4, p5, p6, p7, p8];
-  const location = useLocation();
+  const router = useRouter();
 
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
-    location.pathname == "/landing-page-1" ? setHide(false) : setHide(true);
-  }, [location]);
+    router.pathname == "/landing-page-1" ? setHide(false) : setHide(true);
+  }, []);
 
   return (
     <div
@@ -62,7 +68,7 @@ export default function Progress() {
             <div
               key={index}
               className="xl:w-32 xl:h-32 xs:w-24 xs:h-24 xl:mr-10 xs:mr-5 rounded-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${item})` }}
+              style={{ backgroundImage: `url(${item.src})` }}
             ></div>
           ))}
         </ScrollCarousel>

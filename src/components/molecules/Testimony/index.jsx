@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 // components
 import { Fade } from "react-awesome-reveal";
-import ReactPlayer from "react-player";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -11,9 +10,9 @@ import {
   Autoplay,
 } from "swiper/modules";
 import { GrNext, GrPrevious } from "react-icons/gr";
+import Image from "next/image";
 
 // constant
-// import { padding } from "constant/padding";
 import { testi, url } from "constant/testimony";
 
 // hooks
@@ -23,6 +22,14 @@ import WidthSize from "hooks/screenSize";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "styles/testi.css";
+
+// dynamic
+import dynamic from "next/dynamic";
+const ReactPlayer = dynamic(() => import("react-player"), {
+  ssr: false,
+  loading: () => <p>loading...</p>,
+});
 
 export default function Testimony() {
   const width = WidthSize();
@@ -138,8 +145,10 @@ export default function Testimony() {
               delay: 15000,
               disableOnInteraction: false,
             }}
-            className="hd:px-7 3xl:px-6 2xl:px-5 xl:px-4 lg:px-6 xs:px-5 py-3"
+            // className="hd:px-7 3xl:px-6 2xl:px-5 xl:px-4 lg:px-6 xs:px-5 py-3"
+            className="responsive-padding"
             ref={sliderRef}
+            // style={{ padding: "0 20px" }}
           >
             {testi.map((item, index) => (
               <SwiperSlide
@@ -160,11 +169,13 @@ export default function Testimony() {
 
                 <Fade direction="up" duration={750} delay={300}>
                   <div className="w-full flex items-center mt-4 xs:gap-3 lg:gap-4 xl:gap-3">
-                    <img
-                      src={item.img}
-                      alt="Client Picture"
-                      className="3xl:h-16 3xl:w-16 xl:w-12 xl:h-12 lg:w-16 lg:h-16 xs:w-12 xs:h-12 rounded-full"
-                    />
+                    <div className="3xl:w-16 xl:w-12 lg:w-16 xs:w-12 rounded-full overflow-hidden">
+                      <Image
+                        src={item.img}
+                        alt="Client Picture"
+                        style={{ width: "100%", height: "auto" }}
+                      />
+                    </div>
 
                     <div className="w-full flex flex-col hd:gap-0">
                       <p className="hd:text-3xl 3xl:text-2xl 2xl:text-xl xl:text-base lg:text-2xl font-semibold">

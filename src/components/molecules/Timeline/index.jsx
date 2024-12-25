@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import "styles/timeline.css";
 
@@ -8,14 +10,7 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import Sticky from "react-sticky-el";
-
-// assets
-import w1 from "icons/w1.svg";
-import w2 from "icons/w2.svg";
-import w6 from "icons/w6.svg";
-import w4 from "icons/w4.svg";
-import w5 from "icons/w5.svg";
-import w7 from "icons/w7.svg";
+import Image from "next/image";
 
 // hooks
 import WidthSize from "hooks/screenSize";
@@ -23,8 +18,12 @@ import setTimlineTopHeight from "hooks/timeline";
 import useIncrementalValue from "hooks/incremental";
 
 // constants
-// import { padding } from "constant/padding";
-import { options, contentStyle, childrenOptions } from "constant/timeline";
+import {
+  options,
+  contentStyle,
+  childrenOptions,
+  timelineData,
+} from "constant/timeline";
 
 export default function Timeline() {
   const width = WidthSize();
@@ -97,122 +96,23 @@ export default function Timeline() {
         className="xl:w-1/2 xs:w-full h-full overflow-hidden xl:mb-0 xs:mb-5"
       >
         <VerticalTimeline {...options}>
-          <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w1}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">Sourcing</h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              We meticulously recruit and vet candidates from our curated global
-              talent pool, focusing on professionals from developing countries
-              who bring top-tier skills and cost efficiency.
-            </p>
-          </VerticalTimelineElement>
+          {timelineData.map((item, index) => (
+            <VerticalTimelineElement {...childrenOptions} key={index}>
+              <div className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14">
+                <Image
+                  src={item.icon}
+                  alt="Process logo"
+                  style={{ width: "100%", height: "auto" }}
+                  loading="lazy"
+                />
+              </div>
 
-          <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w2}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">Skill Testing</h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              Each candidate completes a customized sample task and technical
-              assessment, including proficiency with AI tools like ChatGPT,
-              Canva AI, and Zapier, for your review.
-            </p>
-          </VerticalTimelineElement>
-
-          {/* <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w3}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">Pre-Onboarding</h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              FullFind will conduct interviews and reference checks before
-              sending them over to you for the final interview.
-            </p>
-          </VerticalTimelineElement> */}
-
-          <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w4}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">Pre-Onboarding</h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              FullFind conducts detailed interviews, reference checks, and
-              cultural fit assessments before sending the best candidates for
-              your final interview.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w6}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">AI Training</h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              Our team provides specialized training to ensure your assistant is
-              proficient in the latest AI tools and workflows, enabling them to
-              deliver immediate value to your business.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w7}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">
-              Ongoing Management & Oversight
-            </h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              We assign a dedicated project manager to oversee your assistant’s
-              performance, ensuring seamless integration and effective execution
-              of tasks.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w2}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">
-              Retention & Continuous Development
-            </h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              FullFind manages all payments, contracts, and benefits on your
-              behalf, allowing you to settle invoices conveniently using your US
-              debit or credit card. We also provide ongoing AI training to keep
-              your assistant up-to-date with the latest tools and techniques,
-              enhancing their value to your business over time.
-            </p>
-          </VerticalTimelineElement>
-
-          <VerticalTimelineElement {...childrenOptions}>
-            <img
-              src={w5}
-              alt="Process logo"
-              className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14"
-            />
-            <h1 className="text-2xl font-bold">Replacement</h1>
-            <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-              Enjoy a FREE forever replacement guarantee with FullFind. If your
-              talent isn’t the right fit, replace them anytime at no cost, as
-              long as you remain a client.
-            </p>
-          </VerticalTimelineElement>
+              <h1 className="text-2xl font-bold">{item.title}</h1>
+              <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
+                {item.description}
+              </p>
+            </VerticalTimelineElement>
+          ))}
         </VerticalTimeline>
       </div>
 

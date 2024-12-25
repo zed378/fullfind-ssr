@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
+import Image from "next/image";
 
 // assets
 import c1 from "caro/c1.png";
@@ -64,11 +65,16 @@ export default function Carousel() {
               onClick={() => emblaApi.plugins().autoScroll.play()}
               className={`embla__slide flex items-center justify-center grayscale hover:grayscale-0 hd:mx-4 3xl:mx-4 2xl:mx-3 xl:mx-3 xs:mx-2`}
             >
-              <img
-                src={item}
-                alt="Talent"
-                className="hd:h-36 3xl:h-32 2xl:h-24 xl:h-24 lg:h-28 xs:h-20"
-              />
+              <div>
+                <div className="hd:h-36 3xl:h-32 2xl:h-24 xl:h-24 lg:h-28 xs:h-20">
+                  <Image
+                    src={item}
+                    alt="Talent"
+                    style={{ width: "auto", height: "100%" }}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           ))}
         </div>

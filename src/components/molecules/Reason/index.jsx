@@ -1,5 +1,6 @@
 // components
 import { Fade } from "react-awesome-reveal";
+import Image from "next/image";
 
 // assets
 
@@ -22,11 +23,14 @@ export default function Reason() {
             }`}
           >
             <Fade direction="up" duration={800}>
-              <img
-                src={item.image}
-                alt="Icons for banner section"
-                className="h-auto hd:w-28 3xl:w-24 2xl:w-20 xl:w-16 lg:w-20 xs:w-24"
-              />
+              <div className="h-auto hd:w-28 3xl:w-24 2xl:w-20 xl:w-16 lg:w-20 xs:w-24">
+                <Image
+                  src={item.image}
+                  alt="Icons for banner section"
+                  style={{ width: "100%", height: "auto" }}
+                  loading="lazy"
+                />
+              </div>
             </Fade>
 
             <Fade direction="down" duration={1000}>

@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 // components
 import Slider from "react-slick";
-import ScrollCarousel from "scroll-carousel-react";
 import { Fade } from "react-awesome-reveal";
 import StartHiringBtn from "atoms/Button/StartHiring";
 import Reason from "molecules/Reason";
+import Image from "next/image";
 
 // assets
 import p1 from "home/p1.jpg";
@@ -25,11 +25,15 @@ import r6 from "icons/r6.svg";
 import r7 from "icons/r7.svg";
 import brand from "brand/logo.webp";
 
-// constant
-// import { padding } from "constant/padding";
+// dynamic
+import dynamic from "next/dynamic";
+const ScrollCarousel = dynamic(() => import("scroll-carousel-react"), {
+  ssr: false,
+  loading: () => <p>loading...</p>,
+});
 
 export default function Roles() {
-  const nav = useNavigate();
+  const router = useRouter();
   const images = [p1, p2, p3, p4, p5, p6, p7, p8];
 
   const options = {
@@ -78,9 +82,15 @@ export default function Roles() {
             {images.map((item, index) => (
               <div
                 key={index}
-                className="xs:w-24 xs:h-24 rounded-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${item})` }}
-              ></div>
+                className="xs:w-24 xs:h-24 rounded-full overflow-hidden"
+              >
+                <Image
+                  src={item}
+                  alt="talent"
+                  style={{ width: "auto", height: "100%" }}
+                  loading="lazy"
+                />
+              </div>
             ))}
           </ScrollCarousel>
         </div>
@@ -89,11 +99,14 @@ export default function Roles() {
           <Slider {...options}>
             {images.map((item, index) => (
               <div key={index} className="mb-4">
-                <img
-                  src={item}
-                  alt="Talents"
-                  className="3xl:w-24 3xl:h-24 2xl:w-20 2xl:h-20 rounded-full m-auto"
-                />
+                <div className="3xl:w-24 3xl:h-24 2xl:w-20 2xl:h-20 rounded-full m-auto overflow-hidden">
+                  <Image
+                    src={item}
+                    alt="Talents"
+                    style={{ width: "100%", height: "auto" }}
+                    loading="lazy"
+                  />
+                </div>
               </div>
             ))}
           </Slider>
@@ -112,37 +125,46 @@ export default function Roles() {
               <ul className="w-full flex flex-wrap lg:flex-row xs:flex-col items-center gap-3 xs:justify-center xl:justify-start">
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 lg:w-auto xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl"
-                  onClick={() => nav("/roles/video-editor")}
+                  onClick={() => router.push("/roles/video-editor")}
                 >
-                  <img
-                    src={r1}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r1}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   Edit Videos
                 </li>
 
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 lg:w-auto xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl"
-                  onClick={() => nav("/roles/designer")}
+                  onClick={() => router.push("/roles/designer")}
                 >
-                  <img
-                    src={r2}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r2}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   Create Landing Pages
                 </li>
 
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 xl:w-auto lg:w-[35%] xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl xl:inline-flex xs:hidden"
-                  onClick={() => nav("/roles/ads")}
+                  onClick={() => router.push("/roles/ads")}
                 >
-                  <img
-                    src={r3}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r3}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   Design Ads
                 </li>
               </ul>
@@ -152,25 +174,31 @@ export default function Roles() {
               <ul className="w-full flex xl:justify-start xs:justify-center flex-wrap lg:flex-row xs:flex-col items-center gap-3">
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 lg:w-auto xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl"
-                  onClick={() => nav("/roles/va")}
+                  onClick={() => router.push("/roles/va")}
                 >
-                  <img
-                    src={r4}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r4}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   Create Funnels
                 </li>
 
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 lg:w-auto xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl"
-                  onClick={() => nav("/roles/account")}
+                  onClick={() => router.push("/roles/account")}
                 >
-                  <img
-                    src={r5}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r5}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   Communicate with Clients
                 </li>
               </ul>
@@ -180,37 +208,46 @@ export default function Roles() {
               <ul className="w-full flex xl:justify-start xs:justify-center flex-wrap lg:flex-row xs:flex-col items-center gap-3 ">
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 lg:w-auto xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl"
-                  onClick={() => nav("/roles/ui-ux")}
+                  onClick={() => router.push("/roles/ui-ux")}
                 >
-                  <img
-                    src={r6}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r6}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   Generate Leads
                 </li>
 
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 xl:w-auto lg:w-auto xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl xl:hidden"
-                  onClick={() => nav("/roles/ads")}
+                  onClick={() => router.push("/roles/ads")}
                 >
-                  <img
-                    src={r3}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r3}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   Design Ads
                 </li>
 
                 <li
                   className="hd:px-6 3xl:px-6 2xl:px-5 xs:px-4 lg:w-auto xs:w-full py-2 cursor-pointer bg-zinc-100 hover:bg-zinc-200 rounded-full border border-zinc-200 font-medium flex items-center gap-3 hd:text-xl 3xl:text-lg 2xl:text-base lg:text-xl"
-                  onClick={() => nav("/roles/pm")}
+                  onClick={() => router.push("/roles/pm")}
                 >
-                  <img
-                    src={r7}
-                    alt="Roles Icon"
-                    className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5"
-                  />{" "}
+                  <div className=" 3xl:w-8 2xl:w-7 lg:w-8 xs:w-5">
+                    <Image
+                      src={r7}
+                      alt="Roles Icon"
+                      style={{ width: "100%", height: "auto" }}
+                      loading="lazy"
+                    />
+                  </div>
                   And much more...
                 </li>
               </ul>
@@ -226,11 +263,14 @@ export default function Roles() {
           </Fade>
         </div>
 
-        <img
-          src={brand}
-          alt=""
-          className="absolute opacity-25 hd:w-[500px] hd:top-[180px] hd:right-10 3xl:w-[320px] 3xl:right-5 3xl:top-44 2xl:w-[300px] 2xl:top-44 2xl:right-6 z-0 2xl:block xs:hidden"
-        />
+        <div className="absolute opacity-25 hd:w-[500px] hd:top-[180px] hd:right-10 3xl:w-[320px] 3xl:right-5 3xl:top-44 2xl:w-[300px] 2xl:top-44 2xl:right-6 z-0 2xl:block xs:hidden">
+          <Image
+            src={brand}
+            alt="logo"
+            style={{ width: "100%", height: "auto" }}
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   );
