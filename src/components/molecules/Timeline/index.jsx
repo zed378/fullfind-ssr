@@ -1,5 +1,4 @@
-"use client";
-
+import React from "react";
 import { useEffect, useState } from "react";
 import "styles/timeline.css";
 
@@ -97,21 +96,22 @@ export default function Timeline() {
       >
         <VerticalTimeline {...options}>
           {timelineData.map((item, index) => (
-            <VerticalTimelineElement {...childrenOptions} key={index}>
-              <div className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14">
-                <Image
-                  src={item.icon}
-                  alt="Process logo"
-                  style={{ width: "100%", height: "auto" }}
-                  loading="lazy"
-                />
-              </div>
-
-              <h1 className="text-2xl font-bold">{item.title}</h1>
-              <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
-                {item.description}
-              </p>
-            </VerticalTimelineElement>
+            <React.Fragment key={index}>
+              <VerticalTimelineElement {...childrenOptions}>
+                <div className="3xl:w-14 2xl:w-14 xl:w-12 lg:w-20 xs:w-14">
+                  <Image
+                    src={item.icon}
+                    alt="Process logo"
+                    style={{ width: "100%", height: "auto" }}
+                    loading="lazy"
+                  />
+                </div>
+                <h1 className="text-2xl font-bold">{item.title}</h1>
+                <p className="hd:text-base 3xl:text-sm lg:text-base xs:text-xs">
+                  {item.description}
+                </p>
+              </VerticalTimelineElement>
+            </React.Fragment>
           ))}
         </VerticalTimeline>
       </div>

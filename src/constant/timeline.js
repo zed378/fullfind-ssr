@@ -42,42 +42,49 @@ export const childrenOptions = {
 
 export const timelineData = [
   {
+    id: 1,
     icon: w1,
     title: "Sourcing",
     description:
       "We meticulously recruit and vet candidates from our curated global talent pool, focusing on professionals from developing countries who bring top-tier skills and cost efficiency.",
   },
   {
+    id: 2,
     icon: w2,
     title: "Skill Testing",
     description:
       "Each candidate completes a customized sample task and technical assessment, including proficiency with AI tools like ChatGPT, Canva AI, and Zapier, for your review.",
   },
   {
+    id: 3,
     icon: w4,
     title: "Pre-Onboarding",
     description:
       "FullFind conducts detailed interviews, reference checks, and cultural fit assessments before sending the best candidates for your final interview.",
   },
   {
+    id: 4,
     icon: w6,
     title: "AI Training",
     description:
       "Our team provides specialized training to ensure your assistant is proficient in the latest AI tools and workflows, enabling them to deliver immediate value to your business.",
   },
   {
+    id: 5,
     icon: w7,
     title: "Ongoing Management & Oversight",
     description:
       "We assign a dedicated project manager to oversee your assistant’s performance, ensuring seamless integration and effective execution of tasks.",
   },
   {
+    id: 6,
     icon: w2,
     title: "Retention & Continuous Development",
     description:
       "FullFind manages all payments, contracts, and benefits on your behalf, allowing you to settle invoices conveniently using your US debit or credit card. We also provide ongoing AI training to keep your assistant up-to-date with the latest tools and techniques, enhancing their value to your business over time.",
   },
   {
+    id: 7,
     icon: w5,
     title: "Replacement",
     description:

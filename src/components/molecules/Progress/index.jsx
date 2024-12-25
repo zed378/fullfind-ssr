@@ -34,7 +34,7 @@ export default function Progress() {
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
-    router.pathname == "/landing-page-1" ? setHide(false) : setHide(true);
+    router.pathname == "/" ? setHide(true) : setHide(false);
   }, []);
 
   return (

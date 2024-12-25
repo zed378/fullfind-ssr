@@ -5,6 +5,7 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 const nextConfig = {
   reactStrictMode: true,
   compress: true,
+  output: "standalone",
 
   webpack: (config, { isServer }) => {
     // Compression plugin
@@ -36,17 +37,6 @@ const nextConfig = {
         threshold: 10240, // Only compress files larger than 10kB
       })
     );
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: /\.[jt]sx?$/,
-      use: [
-        {
-          loader: "url-loader",
-          options: { limit: 10000 },
-        },
-      ],
-    });
 
     return config;
   },
